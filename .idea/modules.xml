@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/PaddleOCR.iml" filepath="$PROJECT_DIR$/.idea/PaddleOCR.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/PaddleOCR_Engineering_Drawings.iml" filepath="$PROJECT_DIR$/.idea/PaddleOCR_Engineering_Drawings.iml" />
     </modules>
   </component>
 </project>

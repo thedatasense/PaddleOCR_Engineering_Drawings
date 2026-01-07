@@ -9,7 +9,7 @@ engineering drawing PDFs using a two-stage AI pipeline:
 
 Author: Binesh Kumar
 Contact: contact@bineshkumar.me
-Repository: https://github.com/bineshkumar/engineering-drawing-extractor
+Repository: https://github.com/thedatasense/PaddleOCR_Engineering_Drawings
 
 License: MIT
 """
@@ -26,7 +26,7 @@ import pdf2image
 # Configuration
 # =============================================================================
 
-DEFAULT_PDF_PATH = "3814200A00.PDF"
+DEFAULT_PDF_PATH = "drawings/3814200A00.PDF"
 DEFAULT_OUTPUT_DIR = "extraction_output"
 OCR_MODEL_PATH = "PaddlePaddle/PaddleOCR-VL"
 LLM_MODEL_PATH = "Qwen/Qwen3-0.6B"

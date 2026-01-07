@@ -1,0 +1,22 @@
+# Engineering Drawing Information Extractor
+# Author: Binesh Kumar (contact@bineshkumar.me)
+# Repository: https://github.com/thedatasense/PaddleOCR_Engineering_Drawings
+
+# Core dependencies
+torch>=2.0.0
+transformers>=4.40.0
+pdf2image>=1.16.0
+Pillow>=10.0.0
+
+# For tokenization
+sentencepiece>=0.1.99
+protobuf>=4.0.0
+
+# Additional dependencies for PaddleOCR-VL
+einops>=0.7.0
+accelerate>=0.25.0
+
+# Note: pdf2image requires poppler to be installed on your system
+# macOS: brew install poppler
+# Ubuntu: sudo apt-get install poppler-utils
+# Windows: Download from https://github.com/oschwartz10612/poppler-windows/releases
