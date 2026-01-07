@@ -108,6 +108,21 @@ The tool generates:
 }
 ```
 
+## Performance
+
+Processing time depends on the number of pages and complexity of the drawing. Tested on **Apple M3 Pro (MPS)**:
+
+| Drawing | Pages | File Size | Processing Time |
+|---------|-------|-----------|-----------------|
+| 3814200A00.PDF | 2 | 132 KB | ~1 minutes      |
+| 3822800A00.PDF | 1 | 54 KB | ~.5 minute      |
+| 3825500E00.pdf | 6 | 315 KB | ~2 minutes      |
+| 2970900A00.PDF | 2 | 3.9 MB | ~1 minutes      |
+
+**Average**: ~1-2 minutes per page (first run includes model loading ~30s)
+
+> **Note**: First run downloads models (~2GB) from Hugging Face. Subsequent runs use cached models.
+
 ## Hardware Requirements
 
 - **Minimum**: 8GB RAM (CPU mode)
@@ -118,13 +133,23 @@ The tool generates:
 
 The tool automatically detects and uses the best available device.
 
-## Sample Drawing
+## Sample Drawings
 
-The `drawings/` directory contains a sample engineering drawing (`3814200A00.PDF`) from Medtronic/Covidien for testing purposes. This drawing is provided under Medtronic's license agreement included in the repository.
+The `drawings/` directory contains sample engineering drawings from the Medtronic PB560 Open Source Ventilator project:
+
+| File | Description |
+|------|-------------|
+| 3814200A00.PDF | Switch Cover (2 pages) |
+| 3822800A00.PDF | Switch Cover variant (1 page) |
+| 3825500E00.pdf | Multi-page assembly (6 pages) |
+| 2970900A00.PDF | Component drawing (2 pages) |
+
+These drawings are provided under Medtronic's permissive license for the PB560 ventilator (see `permissive-license-open-ventilator.pdf`).
 
 ## How It Works
 
 ```
+
 PDF → Images → PaddleOCR-VL (OCR) → Qwen3-0.6B (Extraction) → Structured JSON
      (pdf2image)   (Vision-Language)      (Text LLM)
 ```
