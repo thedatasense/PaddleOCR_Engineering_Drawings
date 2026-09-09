@@ -77,6 +77,17 @@ def load_ocr_model():
         torch_dtype=get_torch_dtype()
     ).to(DEVICE).eval()
 
+    if hasattr(model, "language_model"):
+        original_forward = model.language_model.forward
+
+        def patched_forward(*args, **kwargs):
+            # transformers==4.57.6 compatibility: PaddleOCR-VL must pass input_embeds (not inputs_embeds)
+            if "inputs_embeds" in kwargs and "input_embeds" not in kwargs:
+                kwargs["input_embeds"] = kwargs.pop("inputs_embeds")
+            return original_forward(*args, **kwargs)
+
+        model.language_model.forward = patched_forward
+
     processor = AutoProcessor.from_pretrained(OCR_MODEL_PATH, trust_remote_code=True)
 
     print("OCR model loaded!")
